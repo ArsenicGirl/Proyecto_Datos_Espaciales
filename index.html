@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <title>Datos Espaciales</title>
 </head>
 <body>
     <div class="container-forms">
 
          <div class="form-add">
             <form action="" method="post">
-                <input type="hiden" name="id" id="id" value="">
+
+                <h1>Gestión de clientes</h1>
+
+                <input type="hidden" name="id" id="id" value="">
 
                 <label for="cedula">Ingrese su número de cedula</label>
                 <input type="number" name="cedula" id="cedula">
@@ -24,7 +28,7 @@
                 <label for="direction">Ingrese su dirección</label>
                 <input type="text" name="direction" id="direction">
 
-                <label for="location">Ingrese su ubicación</label>
+                <h2>Ingrese su ubicación</h2>
 
                 <label for="lat">Latitud:</label>
                 <input type="number" name="lat" id="lat">
@@ -34,7 +38,7 @@
 
                 <div class="button-group">
                     <button type="submit" name="action" value="create">Crear tutor</button><br>
-                    <button type="submit" name="action" value="update">Actualizar tutor</button>
+                    <button type="submit" name="action" value="update" id="update">Actualizar tutor</button>
                 </div>
             </form>
          </div>
@@ -63,6 +67,7 @@
                     <th>Dirección</th>
                     <th>Ubicación - Latitud</th>
                     <th>Ubicación - Longitud</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
