@@ -31,7 +31,7 @@ class Database {
     static async getInstance() {
         if (!Database.#instance) {
             Database.#instance = new Database();
-            await Database.#instance.#connect('localhost', 'tallercamphouse', 'root', '', 3307);
+            await Database.#instance.#connect('localhost', 'deudores_gota_gota', 'root', '', 3307);
         }
         return Database.#instance;
     }

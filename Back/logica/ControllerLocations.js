@@ -1,6 +1,6 @@
 const LocationDAO = require('../persistencia/LocationDAO.js');
-const LocationDTO = require('../persistencia/LocationDTO');
-
+const LocationDTO = require('../persistencia/LocationDTO.js');
+const Database = require('../persistencia/Database.js');
 class ControllerLocations {
     constructor() {
         this.locationDAO = new LocationDAO();
@@ -72,7 +72,7 @@ class ControllerLocations {
             const { cc, name, lastName, address, latitude, longitude } = req.body;
 
             const locationDTO = new LocationDTO(cc, name, lastName, address, latitude, longitude);
-            const result = await this.locationDAO.updateLocation(id);
+            const result = await this.locationDAO.updateLocation(id, locationDTO);
 
             if (result > 0) {
                 res.status(200).json({ message: "Se actualizó la locación" });

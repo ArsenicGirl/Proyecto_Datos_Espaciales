@@ -63,6 +63,3 @@ class LocationDTO {
         this.#longitude = longitude;
     }
 }
-
-
-module.exports = LocationDTO;
