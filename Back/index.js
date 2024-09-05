@@ -20,3 +20,12 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
+
+
+//-----ENDPOINTS-------
+/*
+app.get('/api/clientes', controller.getAllCliente); //tomados de las funciones del controller quer a su vez se toman del DAO
+app.get('/api/clientes/:id', controller.getClienteById);
+app.post('/api/clientes', controller.createCliente);
+app.put('/api/clientes/:id', controller.updateCliente);
+app.delete('/api/clientes/:id', controller.deleteCliente);*/
