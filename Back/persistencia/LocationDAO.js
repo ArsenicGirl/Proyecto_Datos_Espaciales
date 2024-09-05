@@ -11,25 +11,44 @@ class LocationDAO {
         this.db = databaseInstance.getConnection();
     }
 
-    async getAllLocations() {
-        const query = `CALL get_locations();`; // Llama al procedimiento almacenado
-
+    async testQuery() {
         try {
-            const [rows] = await this.db.execute(query);
-            //me extrae desde el campo POINT (cords) la longitud y latitud            
-            return rows.map(row => new LocationDTO(
-                row.loca_cc,
-                row.loca_name,
-                row.loca_lastName,
-                row.loca_address,
-                row.latitude,
-                row.longitude
-            ));
+            const [rows] = await this.db.query('SELECT NOW()'); // Consulta simple para verificar conexión
+            console.log('Consulta de prueba exitosa:', rows);
         } catch (error) {
-            console.error("No se pudo obtener las locaciones", error);
-            throw error;
+            console.error('Error ejecutando la consulta de prueba:', error);
         }
     }
+
+    async getAllLocations() {
+    const query = `CALL get_locations();`;
+
+    try {
+        const [rows] = await this.db.execute(query);
+        console.log('Resultado de getAllLocations:', rows); // Agrega un registro detallado del resultado
+
+        // Verifica el formato de rows
+        if (rows.length === 0) {
+            console.log('No se encontraron resultados.');
+        } else {
+            console.log('Datos obtenidos:', rows);
+        }
+
+        // Extrae los datos del primer conjunto de resultados
+        return rows[0].map(row => new LocationDTO(
+            row.loca_cc,
+            row.loca_name,
+            row.loca_lastName,
+            row.loca_address,
+            row.latitude,
+            row.longitude
+        ));
+    } catch (error) {
+        console.error("No se pudo obtener las locaciones", error);
+        throw error;
+    }
+    }
+
 
     async getLocationById(id) {
         const query = `CALL get_location_by_id(?);`;

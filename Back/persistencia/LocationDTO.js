@@ -1,65 +1,37 @@
+// LocationDTO.js
 class LocationDTO {
-    #cc;
-    #name;
-    #lastName;
-    #address;
-    #latitude;  // Latitud
-    #longitude; // Longitud
-
     constructor(cc, name, lastName, address, latitude, longitude) {
-        this.#cc = cc;
-        this.#name = name;
-        this.#lastName = lastName;
-        this.#address = address;
-        this.#latitude = latitude;
-        this.#longitude = longitude;
+        this.cc = cc;
+        this.name = name;
+        this.lastName = lastName;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     getCc() {
-        return this.#cc;
-    }
-
-    setCc(cc) {
-        this.#cc = cc;
+        return this.cc;
     }
 
     getName() {
-        return this.#name;
-    }
-
-    setName(name) {
-        this.#name = name;
+        return this.name;
     }
 
     getLastName() {
-        return this.#lastName;
-    }
-
-    setLastName(lastName) {
-        this.#lastName = lastName;
+        return this.lastName;
     }
 
     getAddress() {
-        return this.#address;
-    }
-
-    setAddress(address) {
-        this.#address = address;
+        return this.address;
     }
 
     getLatitude() {
-        return this.#latitude;
-    }
-
-    setLatitude(latitude) {
-        this.#latitude = latitude;
+        return this.latitude;
     }
 
     getLongitude() {
-        return this.#longitude;
-    }
-
-    setLongitude(longitude) {
-        this.#longitude = longitude;
+        return this.longitude;
     }
 }
+
+module.exports = LocationDTO;
