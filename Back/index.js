@@ -24,8 +24,8 @@ app.listen(PORT, () => {
 
 //-----ENDPOINTS-------
 /*
-app.get('/api/clientes', controller.getAllCliente); //tomados de las funciones del controller quer a su vez se toman del DAO
-app.get('/api/clientes/:id', controller.getClienteById);
-app.post('/api/clientes', controller.createCliente);
-app.put('/api/clientes/:id', controller.updateCliente);
-app.delete('/api/clientes/:id', controller.deleteCliente);*/
+app.get('/api/clientes', controller.getAllLocations); //tomados de las funciones del controller quer a su vez se toman del DAO
+app.get('/api/clientes/:id', controller.getLocationById);
+app.post('/api/clientes', controller.createLocation);
+app.put('/api/clientes/:id', controller.updateLocation);
+app.delete('/api/clientes/:id', controller.deleteLocation);*/
