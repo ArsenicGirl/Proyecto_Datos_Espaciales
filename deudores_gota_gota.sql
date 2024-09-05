@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 05-09-2024 a las 05:22:41
+-- Tiempo de generación: 05-09-2024 a las 22:12:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -25,16 +25,34 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `add_location` (`cc` INT, `name` VARCHAR(64), `address` VARCHAR(128), `latitude` INT, `longitude` INT)   BEGIN
-		DECLARE cord POINT;
-		SET cord = POINT(latitude,longitude);
-		INSERT INTO locations VALUES (NULL,cc,name,cord);
-	END$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_location` (`cc` INT, `name` VARCHAR(64), `lastName` VARCHAR(64), `address` VARCHAR(128), `latitude` INT, `longitude` INT)   BEGIN
+    DECLARE cord POINT;
+    SET cord = POINT(latitude, longitude);
+    INSERT INTO locations VALUES (NULL, cc, name, lastName, address, cord);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_clients_nearby` (IN `lat` FLOAT, IN `lng` FLOAT)   BEGIN
+    SELECT loca_cc, loca_name, loca_lastName, loca_address, 
+           ST_X(loca_cords) as latitude, 
+           ST_Y(loca_cords) as longitude,
+           ST_Distance_Sphere(POINT(lng, lat), loca_cords) AS distance
+    FROM locations
+    ORDER BY distance;
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_locations` ()   BEGIN
-		
-		SELECT loca_cc,loca_name,loca_address,ST_X(loca_cords) as latitude,ST_Y(loca_cords) as longitude FROM locations;
-    END$$
+    SELECT loca_cc, loca_name, loca_lastName, loca_address, 
+           ST_X(loca_cords) as latitude, 
+           ST_Y(loca_cords) as longitude 
+    FROM locations;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_location_by_id` (IN `loca_id` INT)   BEGIN
+    SELECT loca_id, loca_cc, loca_name, loca_lastName, loca_address, 
+           ST_X(loca_cords) AS latitude, ST_Y(loca_cords) AS longitude 
+    FROM locations
+    WHERE loca_id = loca_id;
+END$$
 
 DELIMITER ;
 
