@@ -24,7 +24,7 @@ app.get('/api/locations/:id', ControllerLocations.getLocationById);
 app.post('/api/locations', ControllerLocations.createLocation);
 app.put('/api/locations/:id', ControllerLocations.updateLocation);
 app.delete('/api/locations/:id', ControllerLocations.deleteLocation);
-
+app.get('/api/locations/nearby', ControllerLocations.getLocationNearby);
 
 
 // Iniciar el servidor
