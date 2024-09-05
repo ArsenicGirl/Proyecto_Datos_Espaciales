@@ -9,19 +9,19 @@ class LocationDAO{
     }
 
     async initialize(){
-        const databaseInstance = await Satabase.getInstance();
+        const databaseInstance = await Database.getInstance();
         this.db = databaseInstance.getConnection();
     }
    
 
 
-    async getAllLocations(DTO) {
+    async getAllLocations(locationDTO) {
         const query = `CALL get_locations();`; //llamada al PA
 
         try{
             const [rows] = await this.db.execute(query);
             //me extrae desde el campo POINT (cords) la longitud y latitud
-            return rows.map(row => ({
+            return rows.map(row => new LocationDTO({
                 cc: row.loca_cc,
                 name: row.loca_name,
                 lastName: row.loca_lastName,
@@ -123,3 +123,5 @@ class LocationDAO{
         }
     }
 }
+
+module.exports = LocationDAO;
