@@ -19,14 +19,14 @@
     <div class="container-forms">
 
          <div class="form-add">
-            <form action="" method="post">
+            <form id="formularioCliente" action="" method="post">
 
                 <h1>Ruteo gota a gota </h1>
 
                 <input type="hidden" name="id" id="id" value="">
 
                 <label for="cedula">Ingrese su número de cedula</label>
-                <input type="number" name="cedula" id="cedula">
+                <input type="number" name="cc" id="cc">
 
                 <label for="name">Ingrese su nombre(s)</label>
                 <input type="text" name="name" id="name">
@@ -35,7 +35,15 @@
                 <input type="text" name="lastName" id="lastName">
 
                 <label for="direction">Ingrese su dirección</label>
-                <input type="text" name="direction" id="direction">
+                <input type="text" name="address" id="address">
+
+                <h2>Ingrese su Ubicación</h1>
+
+                <label for="lat">Ingrese la latitud</label>
+                <input type="number" step="any" name="lat" id="lat">
+
+                <label for="lng">Ingrese la longitud</label>
+                <input type="number" step="any" name="lng" id="lng">
 
 
                 <div class="button-group">
