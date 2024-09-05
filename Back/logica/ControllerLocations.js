@@ -110,4 +110,4 @@ class ControllerLocations{
     
 }
 
-module.exports = ControllerLocations;
+module.exports = new ControllerLocations();

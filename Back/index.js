@@ -9,13 +9,12 @@ const app = express();
 const PORT = 3000;
 
 // Servir archivos estáticos desde la carpeta Front/Presentacion
-app.use(express.static(path.join(__dirname, '../Front')));//app.use(express.static(path.join(__dirname, '../Front/Presentacion')));
+app.use(express.static(path.join(__dirname, '../Front/Presentacion')));
 
 // Ruta principal para servir el archivo index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../Front/Presentacion', 'index.html'));
 });
-
 
 
 //-----ENDPOINTS-------
